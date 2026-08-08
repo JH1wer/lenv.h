@@ -47,11 +47,11 @@ static inline struct lenv_t *lenv_init(const char* fp)
 
 static inline char* lenv_get(struct lenv_t* lenv, char *token) {
     struct lenv_t* prx = lenv;
-    while (lenv != NULL) {
-        if (strcmp(lenv->token, token) == 0) {
-            return lenv->value;
+    while (prx != NULL) {
+        if (strcmp(prx->token, token) == 0) {
+            return prx->value;
         }
-        lenv = lenv->next;
+        prx = prx->next;
     }
     return NULL;
 }

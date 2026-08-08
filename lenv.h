@@ -45,6 +45,17 @@ static inline struct lenv_t *lenv_init(const char* fp)
     return new_lenv;
 }
 
+static inline char* lenv_get(struct lenv_t* lenv, char *token) {
+    struct lenv_t* prx = lenv;
+    while (prx != NULL) {
+        if (strcmp(prx->token, token) == 0) {
+            return prx->value;
+        }
+        prx = prx->next;
+    }
+    return NULL;
+}
+
 // Libera toda a memoria alocada de forma segura
 static inline void lenvt_free(struct lenv_t** lenv) 
 {
